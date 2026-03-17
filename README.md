@@ -41,18 +41,18 @@ Całość zasilana jest ogniwem Li-Ion z możliwością ładowania i monitorowan
 
 ## Schemat połączeń
 
-| Komponent | Pin w Pico (Sugerowany) | Uwagi |
+| Komponent | Pin w Pico (Sugerowany)
 | :--- | :--- | :--- |
-| **MPU6050 SDA** | GP4 (I2C0 SDA) | |
-| **MPU6050 SCL** | GP5 (I2C0 SCL) | |
-| **OLED SDA** | GP4 (I2C0 SDA) | Wspólna magistrala z MPU |
-| **OLED SCL** | GP5 (I2C0 SCL) | Wspólna magistrala z MPU |
-| **Buzzer** | GP15 | Sterowanie PWM lub High/Low |
-| **Wibracja (Baza)** | GP14 | Przez tranzystor! |
-| **Przycisk 1** | GP16 | Kalibracja |
-| **Przycisk 2** | GP17 | Offset |
-| **Przycisk 3** | GP18 | Funkcja dodatkowa |
-| **Pomiar Baterii** | GP26 (ADC0) | Przez dzielnik napięcia (V_bat -> R1 -> ADC -> R2 -> GND) |
+| **MPU6050 SDA** | GP4 (I2C0 SDA)
+| **MPU6050 SCL** | GP5 (I2C0 SCL)
+| **OLED SDA** | GP4 (I2C0 SDA)
+| **OLED SCL** | GP5 (I2C0 SCL)
+| **Buzzer** | GP15 
+| **Wibracja (Baza)** | GP14
+| **Przycisk 1** | GP16
+| **Przycisk 2** | GP17
+| **Przycisk 3** | GP18
+| **Pomiar Baterii** | GP26 (ADC0)
 
 
 ## Obudowa 3D
