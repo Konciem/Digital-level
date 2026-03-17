@@ -41,18 +41,18 @@ Całość zasilana jest ogniwem Li-Ion z możliwością ładowania i monitorowan
 
 ## Schemat połączeń
 
-| Komponent | Pin w Pico (Sugerowany)
-| :--- | :--- | :--- |
-| **MPU6050 SDA** | GP4 (I2C0 SDA)
-| **MPU6050 SCL** | GP5 (I2C0 SCL)
-| **OLED SDA** | GP4 (I2C0 SDA)
-| **OLED SCL** | GP5 (I2C0 SCL)
-| **Buzzer** | GP15 
-| **Wibracja (Baza)** | GP14
-| **Przycisk 1** | GP16
-| **Przycisk 2** | GP17
-| **Przycisk 3** | GP18
-| **Pomiar Baterii** | GP26 (ADC0)
+| Komponent | Pin w Pico (Sugerowany)|
+| :--- | :--- |
+| **MPU6050 SDA** | GP4 (I2C0 SDA)|
+| **MPU6050 SCL** | GP5 (I2C0 SCL)|
+| **OLED SDA** | GP4 (I2C0 SDA)|
+| **OLED SCL** | GP5 (I2C0 SCL)|
+| **Buzzer** | GP15 |
+| **Wibracja (Baza)** | GP14|
+| **Przycisk 1** | GP16|
+| **Przycisk 2** | GP17|
+| **Przycisk 3** | GP18|
+| **Pomiar Baterii** | GP26 (ADC0)|
 
 
 ## Obudowa 3D
