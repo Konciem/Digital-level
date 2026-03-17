@@ -30,14 +30,12 @@ MPU6050 mpu;
 // --- PIN BATERII ---
 #define BAT_ADC_PIN 29 
 
-// --- ZMIENNE STANU ---
 bool isFrozen = false;          
 bool showBatteryScreen = false;
 int  currentAxis = 0;  
 float pitchOffset = 0.0;        
 float rollOffset = 0.0;
 
-// Zmienne baterii
 int batPercentage = 100;
 float batVoltage = 4.2;
 
@@ -178,25 +176,23 @@ void loop() {
     switch(pressed) {
       case 0: isFrozen = !isFrozen; break; // HOLD
       
-      case 1: if (!isFrozen && !showBatteryScreen) { // ZERO (TARA)
+      case 1: if (!isFrozen && !showBatteryScreen) { // ZERO
           int16_t ax, ay, az, gx, gy, gz; 
           mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
           float axf = ax / 16384.0; float ayf = ay / 16384.0; float azf = az / 16384.0;
           
-          // --- LOGIKA ZEROWANIA (BOKI JAKO PITCH) ---
-          float v_Z = ayf; // PION (Oś Y czujnika)
+          float v_Z = ayf;
           
-          // ZAMIANA OSI DLA ZEROWANIA:
-          float v_Y = axf; // Teraz PITCH to Oś X (Boki)
-          float v_X = azf; // Teraz ROLL to Oś Z (Przód/Tył)
+          float v_Y = axf;
+          float v_X = azf; 
 
           pitchOffset = atan2(v_Y, sqrt(v_X * v_X + v_Z * v_Z)) * 180.0 / PI;
           rollOffset  = atan2(v_X, sqrt(v_Y * v_Y + v_Z * v_Z)) * 180.0 / PI;
         } break;
         
-      case 2: currentAxis = !currentAxis; break; // Zmiana Osi
-      case 3: showBatteryScreen = !showBatteryScreen; break; // Bateria
-      case 4: pitchOffset = 0; rollOffset = 0; break; // RESET
+      case 2: currentAxis = !currentAxis; break;
+      case 3: showBatteryScreen = !showBatteryScreen; break;
+      case 4: pitchOffset = 0; rollOffset = 0; break;
     }
   }
 
@@ -222,10 +218,8 @@ void loop() {
     float virtual_Y = axf;  
     float virtual_X = azf;  
 
-    // Obliczamy PITCH (Teraz reaguje na lewo/prawo)
     float rawPitch = atan2(virtual_Y, sqrt(virtual_X * virtual_X + virtual_Z * virtual_Z)) * 180.0 / PI;
 
-    // Obliczamy ROLL (Teraz reaguje na przód/tył)
     float rawRoll  = atan2(virtual_X, sqrt(virtual_Y * virtual_Y + virtual_Z * virtual_Z)) * 180.0 / PI;
     
     // Filtracja
