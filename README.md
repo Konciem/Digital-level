@@ -1,4 +1,4 @@
-#Elektroniczna Poziomica Cyfrowa (Digital Spirit Level)
+## Elektroniczna Poziomica Cyfrowa
 
 Projekt elektronicznej poziomicy opartej na mikrokontrolerze Raspberry Pi Pico RP2040. Urządzenie mierzy kąt nachylenia w dwóch osiach (X i Y) w czasie rzeczywistym, wyświetla wyniki na ekranie OLED.
 
