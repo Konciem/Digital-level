@@ -1,60 +1,59 @@
-## Elektroniczna Poziomica Cyfrowa
+# Electronic Digital Level
 
-Projekt elektronicznej poziomicy opartej na mikrokontrolerze Raspberry Pi Pico RP2040. Urządzenie mierzy kąt nachylenia w dwóch osiach (X i Y) w czasie rzeczywistym, wyświetla wyniki na ekranie OLED.
+A digital level project based on the Raspberry Pi Pico (RP2040) microcontroller. The device measures the inclination angle in two axes (X and Y) in real-time and displays the results on an OLED screen.
 
-Całość zasilana jest ogniwem Li-Ion z możliwością ładowania i monitorowania stanu baterii, a elektronika zamknięta jest w obudowie z druku 3D.
+The entire system is powered by a Li-Ion cell with charging and battery status monitoring capabilities, and the electronics are enclosed in a 3D-printed case.
 
-## Główne Funkcje
+## Main Features
 
-* **Pomiar w czasie rzeczywistym:** Wyświetlanie kąta nachylenia w pionie i poziomie.
-* **Sygnalizacja poziomu (0°):**
-    * Sygnał dźwiękowy (Buzzer).
-    * Sygnał wibracyjny (Haptic feedback).
-* **Kalibracja:** Funkcja zerowania kąta (tarowania) za pomocą przycisku.
-* **Offset:** Możliwość ustawienia własnego punktu odniesienia.
-* **System zasilania:** Wbudowane ładowanie USB oraz **odczyt procentowego stanu naładowania baterii** na ekranie.
-* **Interfejs:** Obsługa za pomocą 3 przycisków fizycznych.
+* **Real-time Measurement:** Displaying vertical and horizontal inclination angles.
+* **Level Signaling (0°):**
+    * Acoustic signal (Buzzer).
+    * Haptic feedback (Vibration motor).
+* **Calibration:** Angle zeroing (taring) function via a physical button.
+* **Offset:** Ability to set a custom reference point.
+* **Power System:** Built-in USB charging and **battery percentage readout** displayed on the screen.
+* **Interface:** Operated using 3 physical buttons.
 
-## Wykaz Elementów
+## Component List
 
-### Mikrokontroler i Czujniki
-* **Raspberry Pi Pico** (RP2040) lub Pico W.
-* **MPU6050** – 3-osiowy akcelerometr i 3-osiowy żyroskop (komunikacja I2C, 3.3V).
+### Microcontroller and Sensors
+* **Raspberry Pi Pico** (RP2040) or Pico W.
+* **MPU6050** – 3-axis accelerometer and 3-axis gyroscope (I2C communication, 3.3V).
 
-### Wyświetlacz i Sygnalizacja
-* **OLED 1.3" (SH1106)** lub 0.96" (SSD1306) – interfejs I2C.
-* **Buzzer aktywny** (3.3V – 5V, np. KY-012).
-* **Silnik wibracyjny 3V** (typu "coin" lub z telefonu) sterowany przez **tranzystor NPN (np. 2N2222)** + rezystor bazy 1kΩ.
+### Display and Signaling
+* **OLED 1.3" (SH1106)** or 0.96" (SSD1306) – I2C interface.
+* **Active Buzzer** (3.3V – 5V, e.g., KY-012).
+* **3V Vibration Motor** (coin type or from a phone) controlled via an **NPN transistor (e.g., 2N2222)** + 1kΩ base resistor.
 
-### Zasilanie i Monitorowanie Baterii
-* **Ogniwo Li-Ion 3.7V** (np. 18650 lub płaskie ogniwo Li-Po).
-* **Moduł ładowania TP4056** (z zabezpieczeniem USB-C/MicroUSB).
-* **Przetwornica Step-Up** (podnosząca napięcie do 5V dla VSYS Pico lub stabilne 3.3V).
-* **Włącznik suwakowy** (odcinający zasilanie z baterii).
-* **Dzielnik napięcia (do pomiaru baterii):**
-    * 2x Rezystor (np. 10kΩ i 10kΩ lub 100kΩ i 100kΩ) podłączone do pinu ADC w celu bezpiecznego pomiaru napięcia > 3.3V.
+### Power and Battery Monitoring
+* **Li-Ion 3.7V Cell** (e.g., 18650 or a flat Li-Po cell).
+* **TP4056 Charging Module** (with USB-C/MicroUSB protection).
+* **Step-Up Converter** (boosting voltage to 5V for Pico VSYS or stable 3.3V).
+* **Slide Switch** (to disconnect battery power).
+* **Voltage Divider (for battery measurement):**
+    * 2x Resistors (e.g., 10kΩ and 10kΩ or 100kΩ and 100kΩ) connected to an ADC pin for safe measurement of voltage > 3.3V.
 
-### Sterowanie i Inne
-* 4x **Przycisk Tact Switch** (6x6 mm) – (Menu / Kalibracja / Reset/ Stan bateri).
-* Rezystory
-* Obudowa z druku 3D.
+### Control and Others
+* 4x **Tact Switch Buttons** (6x6 mm) – (Menu / Calibration / Reset / Battery Status).
+* Resistors.
+* 3D-printed enclosure.
 
-## Schemat połączeń
+## Wiring Diagram (Pinout)
 
-| Komponent | Pin w Pico (Sugerowany)|
+| Component | Pico Pin (Suggested) |
 | :--- | :--- |
-| **MPU6050 SDA** | GP4 (I2C0 SDA)|
-| **MPU6050 SCL** | GP5 (I2C0 SCL)|
-| **OLED SDA** | GP4 (I2C0 SDA)|
-| **OLED SCL** | GP5 (I2C0 SCL)|
+| **MPU6050 SDA** | GP4 (I2C0 SDA) |
+| **MPU6050 SCL** | GP5 (I2C0 SCL) |
+| **OLED SDA** | GP4 (I2C0 SDA) |
+| **OLED SCL** | GP5 (I2C0 SCL) |
 | **Buzzer** | GP15 |
-| **Wibracja (Baza)** | GP14|
-| **Przycisk 1** | GP16|
-| **Przycisk 2** | GP17|
-| **Przycisk 3** | GP18|
-| **Pomiar Baterii** | GP26 (ADC0)|
+| **Vibration (Base)** | GP14 |
+| **Button 1** | GP16 |
+| **Button 2** | GP17 |
+| **Button 3** | GP18 |
+| **Battery Measurement**| GP26 (ADC0) |
 
+## 3D Enclosure
 
-## Obudowa 3D
-
-Projekt obudowy został zaprojektowany tak, aby pomieścić wszystkie komponenty i zapewnić stabilną podstawę do pomiarów.
+The enclosure was designed to house all components and provide a stable base for accurate measurements.
